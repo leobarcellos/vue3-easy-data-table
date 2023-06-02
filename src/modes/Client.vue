@@ -12,6 +12,7 @@
     <DataTable
       table-node-id="my-table"
       v-model:items-selected="itemsSelected"
+      v-model:items-expanded="itemsExpanded"
       click-row-to-expand
       ref="dataTable"
       alternating
@@ -196,6 +197,17 @@ const items = ref<Item[]>([
 // ];
 
 const itemsSelected = ref<Item[]>([items.value[1]]);
+const itemsExpanded = ref<Item[]>([]);
+
+setTimeout(function() {
+  itemsExpanded.value.push(items.value[5]);
+  console.log('programatically expanding ', items.value[5]);
+}, 2000)
+
+setTimeout(function() {
+  itemsExpanded.value.push(items.value[3])
+  console.log('programatically expanding ', items.value[3]);
+}, 2500)
 
 const showItem = (item: ClickRowArgument) => {
   console.log('item 111');

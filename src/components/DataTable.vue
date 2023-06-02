@@ -351,6 +351,7 @@ const {
   headerTextDirection,
   indexColumnWidth,
   items,
+  itemsExpanded,
   itemsSelected,
   loading,
   mustSort,
@@ -406,6 +407,7 @@ const emits = defineEmits([
   'expandRow',
   'updateSort',
   'updateFilter',
+  'update:itemsExpanded',
   'update:itemsSelected',
   'update:serverOptions',
   'updatePageItems',
@@ -534,7 +536,8 @@ const {
 } = useExpandableRow(
   pageItems,
   prevPageEndIndex,
-  emits,
+  itemsExpanded,
+  emits
 );
 
 const {

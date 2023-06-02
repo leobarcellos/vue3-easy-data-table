@@ -75,6 +75,10 @@ export default {
     type: Number,
     default: 60,
   },
+  itemsExpanded: {
+    type: Array as PropType<Item[]> | null,
+    default: [],
+  },
   itemsSelected: {
     type: Array as PropType<Item[]> | null,
     default: null,
