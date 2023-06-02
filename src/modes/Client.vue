@@ -197,17 +197,12 @@ const items = ref<Item[]>([
 // ];
 
 const itemsSelected = ref<Item[]>([items.value[1]]);
-const itemsExpanded = ref<Item[]>([]);
-
-setTimeout(function() {
-  itemsExpanded.value.push(items.value[5]);
-  console.log('programatically expanding ', items.value[5]);
-}, 2000)
+const itemsExpanded = ref<Item[]>([items.value[1]]);
 
 setTimeout(function() {
   itemsExpanded.value.push(items.value[3])
   console.log('programatically expanding ', items.value[3]);
-}, 2500)
+}, 2000)
 
 const showItem = (item: ClickRowArgument) => {
   console.log('item 111');

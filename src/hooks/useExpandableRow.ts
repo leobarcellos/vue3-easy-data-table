@@ -1,4 +1,4 @@
-import { ref, Ref, ComputedRef, watch } from 'vue';
+import { ref, Ref, ComputedRef, watchEffect } from 'vue';
 import type { Item } from '../types/main';
 import type { EmitsEventName } from '../types/internal';
 
@@ -42,13 +42,13 @@ export default function useExpandableRow(
     emits('update:itemsExpanded', expandingItemIndexList.value.map(index => items.value[index]))
   }
 
-  watch(itemsExpanded, (value) => {
-    value.forEach(item => {
+  watchEffect(() => {
+    itemsExpanded.value.forEach(item => {
       const currentPageExpandIndex = getItemIndex(item)
       emits('expandRow', prevPageEndIndex.value + currentPageExpandIndex, item)
       expandingItemIndexList.value.push(prevPageEndIndex.value + currentPageExpandIndex)
     })
-  }, { deep: true });
+  });
 
   return {
     expandingItemIndexList,
